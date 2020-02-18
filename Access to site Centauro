@@ -1,0 +1,32 @@
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+
+    public class NewClass {
+
+       public static void main (String[] args) throws InterruptedException {
+        
+  
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\ricardo.filho\\Documents\\NetBeansProjects\\Test\\src\\test\\java\\chromedriver_win32\\chromedriver.exe");//Sempre inserir o ChromeDriver na pasta do Projeto.
+        
+        WebDriver driver = new ChromeDriver();
+          
+         driver.manage().window().maximize();//Maximiza a aba da pagina web.
+           driver.get("https://www.americanas.com.br");
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+             driver.findElement(By.linkText("Centauro")).click();           
+              driver.wait(3);// Aguarda um tempo em Segundos.
+               driver.findElement(By.linkText("HOMENS")).click();
+                driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+              driver.findElement(By.linkText("Entre ou cadastre-se")).click();
+            driver.wait(3);
+           driver.findElement(By.linkText("Entre/Cadastre-se")).click();
+          driver.findElement (By.id("email-input")).sendKeys("teste");//Insere os dados no campo.
+           driver.findElement(By.id("password-input")).sendKeys("teste");//Clica e insere valor no campo-senha
+            driver.findElement(By.cssSelector("#login-button")).click();
+             driver.quit();
+}
